@@ -27,16 +27,16 @@ import org.apache.ibatis.cache.impl.PerpetualCache;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface CacheNamespace {
-  Class<? extends org.apache.ibatis.cache.Cache> implementation() default PerpetualCache.class;
+    Class<? extends org.apache.ibatis.cache.Cache> implementation() default PerpetualCache.class;
 
-  Class<? extends org.apache.ibatis.cache.Cache> eviction() default LruCache.class;
+    Class<? extends org.apache.ibatis.cache.Cache> eviction() default LruCache.class;
 
-  long flushInterval() default 0;
+    long flushInterval() default 0;
 
-  int size() default 1024;
+    int size() default 1024;
 
-  boolean readWrite() default true;
-  
-  boolean blocking() default false;
-  
+    boolean readWrite() default true;
+
+    boolean blocking() default false;
+
 }

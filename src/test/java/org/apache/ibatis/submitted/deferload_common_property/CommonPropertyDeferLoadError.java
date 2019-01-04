@@ -74,14 +74,16 @@ public class CommonPropertyDeferLoadError {
         try {
             class MyResultHandler implements ResultHandler {
                 List<Child> children = new ArrayList<Child>();
+
                 public void handleResult(ResultContext context) {
-                    Child child = (Child)context.getResultObject();
+                    Child child = (Child) context.getResultObject();
                     children.add(child);
                 }
-            };
+            }
+            ;
             MyResultHandler myResultHandler = new MyResultHandler();
             sqlSession.select("org.apache.ibatis.submitted.deferload_common_property.ChildMapper.selectAll", myResultHandler);
-            for (Child child: myResultHandler.children) {
+            for (Child child : myResultHandler.children) {
                 assertNotNull(child.getFather());
             }
         } finally {
@@ -95,10 +97,11 @@ public class CommonPropertyDeferLoadError {
         try {
             class MyResultHandler implements ResultHandler {
                 public void handleResult(ResultContext context) {
-                    Child child = (Child)context.getResultObject();
+                    Child child = (Child) context.getResultObject();
                     assertNotNull(child.getFather());
                 }
-            };
+            }
+            ;
             sqlSession.select("org.apache.ibatis.submitted.deferload_common_property.ChildMapper.selectAll", new MyResultHandler());
         } finally {
             sqlSession.close();
@@ -111,14 +114,16 @@ public class CommonPropertyDeferLoadError {
         try {
             class MyResultHandler implements ResultHandler {
                 List<Child> children = new ArrayList<Child>();
+
                 public void handleResult(ResultContext context) {
-                    Child child = (Child)context.getResultObject();
+                    Child child = (Child) context.getResultObject();
                     children.add(child);
                 }
-            };
+            }
+            ;
             MyResultHandler myResultHandler = new MyResultHandler();
             sqlSession.select("org.apache.ibatis.submitted.deferload_common_property.ChildMapper.selectAll", myResultHandler);
-            for (Child child: myResultHandler.children) {
+            for (Child child : myResultHandler.children) {
                 assertNotNull(child.getFather());
             }
         } finally {
@@ -132,10 +137,11 @@ public class CommonPropertyDeferLoadError {
         try {
             class MyResultHandler implements ResultHandler {
                 public void handleResult(ResultContext context) {
-                    Child child = (Child)context.getResultObject();
+                    Child child = (Child) context.getResultObject();
                     assertNotNull(child.getFather());
                 }
-            };
+            }
+            ;
             sqlSession.select("org.apache.ibatis.submitted.deferload_common_property.ChildMapper.selectAll", new MyResultHandler());
         } finally {
             sqlSession.close();

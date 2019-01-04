@@ -18,6 +18,7 @@ package org.apache.ibatis.submitted.serializecircular;
 import java.util.List;
 
 public interface PersonMapper {
-  public Person getById(Integer anId);
-  public List<Person> getByDepartment(Integer anDepartmentId);
+    public Person getById(Integer anId);
+
+    public List<Person> getByDepartment(Integer anDepartmentId);
 }

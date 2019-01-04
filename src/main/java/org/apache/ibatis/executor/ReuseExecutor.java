@@ -38,73 +38,73 @@ import org.apache.ibatis.transaction.Transaction;
  */
 public class ReuseExecutor extends BaseExecutor {
 
-  //可重用的执行器内部用了一个map，用来缓存SQL语句对应的Statement
-  private final Map<String, Statement> statementMap = new HashMap<String, Statement>();
+    //可重用的执行器内部用了一个map，用来缓存SQL语句对应的Statement
+    private final Map<String, Statement> statementMap = new HashMap<String, Statement>();
 
-  public ReuseExecutor(Configuration configuration, Transaction transaction) {
-    super(configuration, transaction);
-  }
-
-  @Override
-  public int doUpdate(MappedStatement ms, Object parameter) throws SQLException {
-    Configuration configuration = ms.getConfiguration();
-    //和SimpleExecutor一样，新建一个StatementHandler
-    //这里看到ResultHandler传入的是null
-    StatementHandler handler = configuration.newStatementHandler(this, ms, parameter, RowBounds.DEFAULT, null, null);
-    //准备语句
-    Statement stmt = prepareStatement(handler, ms.getStatementLog());
-    return handler.update(stmt);
-  }
-
-  @Override
-  public <E> List<E> doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) throws SQLException {
-    Configuration configuration = ms.getConfiguration();
-    StatementHandler handler = configuration.newStatementHandler(wrapper, ms, parameter, rowBounds, resultHandler, boundSql);
-    Statement stmt = prepareStatement(handler, ms.getStatementLog());
-    return handler.<E>query(stmt, resultHandler);
-  }
-
-  @Override
-  public List<BatchResult> doFlushStatements(boolean isRollback) throws SQLException {
-    for (Statement stmt : statementMap.values()) {
-      closeStatement(stmt);
+    public ReuseExecutor(Configuration configuration, Transaction transaction) {
+        super(configuration, transaction);
     }
-    statementMap.clear();
-    return Collections.emptyList();
-  }
 
-  private Statement prepareStatement(StatementHandler handler, Log statementLog) throws SQLException {
-    Statement stmt;
-    //得到绑定的SQL语句
-    BoundSql boundSql = handler.getBoundSql();
-    String sql = boundSql.getSql();
-    //如果缓存中已经有了，直接得到Statement
-    if (hasStatementFor(sql)) {
-      stmt = getStatement(sql);
-    } else {
-      //如果缓存没有找到，则和SimpleExecutor处理完全一样，然后加入缓存
-      Connection connection = getConnection(statementLog);
-      stmt = handler.prepare(connection);
-      putStatement(sql, stmt);
+    @Override
+    public int doUpdate(MappedStatement ms, Object parameter) throws SQLException {
+        Configuration configuration = ms.getConfiguration();
+        //和SimpleExecutor一样，新建一个StatementHandler
+        //这里看到ResultHandler传入的是null
+        StatementHandler handler = configuration.newStatementHandler(this, ms, parameter, RowBounds.DEFAULT, null, null);
+        //准备语句
+        Statement stmt = prepareStatement(handler, ms.getStatementLog());
+        return handler.update(stmt);
     }
-    handler.parameterize(stmt);
-    return stmt;
-  }
 
-  private boolean hasStatementFor(String sql) {
-    try {
-      return statementMap.keySet().contains(sql) && !statementMap.get(sql).getConnection().isClosed();
-    } catch (SQLException e) {
-      return false;
+    @Override
+    public <E> List<E> doQuery(MappedStatement ms, Object parameter, RowBounds rowBounds, ResultHandler resultHandler, BoundSql boundSql) throws SQLException {
+        Configuration configuration = ms.getConfiguration();
+        StatementHandler handler = configuration.newStatementHandler(wrapper, ms, parameter, rowBounds, resultHandler, boundSql);
+        Statement stmt = prepareStatement(handler, ms.getStatementLog());
+        return handler.<E>query(stmt, resultHandler);
     }
-  }
 
-  private Statement getStatement(String s) {
-    return statementMap.get(s);
-  }
+    @Override
+    public List<BatchResult> doFlushStatements(boolean isRollback) throws SQLException {
+        for (Statement stmt : statementMap.values()) {
+            closeStatement(stmt);
+        }
+        statementMap.clear();
+        return Collections.emptyList();
+    }
 
-  private void putStatement(String sql, Statement stmt) {
-    statementMap.put(sql, stmt);
-  }
+    private Statement prepareStatement(StatementHandler handler, Log statementLog) throws SQLException {
+        Statement stmt;
+        //得到绑定的SQL语句
+        BoundSql boundSql = handler.getBoundSql();
+        String sql = boundSql.getSql();
+        //如果缓存中已经有了，直接得到Statement
+        if (hasStatementFor(sql)) {
+            stmt = getStatement(sql);
+        } else {
+            //如果缓存没有找到，则和SimpleExecutor处理完全一样，然后加入缓存
+            Connection connection = getConnection(statementLog);
+            stmt = handler.prepare(connection);
+            putStatement(sql, stmt);
+        }
+        handler.parameterize(stmt);
+        return stmt;
+    }
+
+    private boolean hasStatementFor(String sql) {
+        try {
+            return statementMap.keySet().contains(sql) && !statementMap.get(sql).getConnection().isClosed();
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    private Statement getStatement(String s) {
+        return statementMap.get(s);
+    }
+
+    private void putStatement(String sql, Statement stmt) {
+        statementMap.put(sql, stmt);
+    }
 
 }

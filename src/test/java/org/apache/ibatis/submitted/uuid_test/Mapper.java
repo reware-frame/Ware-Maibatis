@@ -19,7 +19,8 @@ import java.util.UUID;
 
 public interface Mapper {
 
-  User getUser(UUID id);
-  void insertUser(User user);
+    User getUser(UUID id);
+
+    void insertUser(User user);
 
 }

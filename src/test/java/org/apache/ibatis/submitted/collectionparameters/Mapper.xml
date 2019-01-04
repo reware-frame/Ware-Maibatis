@@ -15,34 +15,34 @@
        limitations under the License.
 -->
 <!DOCTYPE mapper
-    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.apache.ibatis.submitted.collectionparameters.Mapper">
 
-	<select id="getUsersFromList"
-		resultType="org.apache.ibatis.submitted.collectionparameters.User">
-		select * from users where id in
-		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
-			#{item}
-		</foreach>
-	</select>
+    <select id="getUsersFromList"
+            resultType="org.apache.ibatis.submitted.collectionparameters.User">
+        select * from users where id in
+        <foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
 
-	<select id="getUsersFromArray"
-		resultType="org.apache.ibatis.submitted.collectionparameters.User">
-		select * from users where id in
-		<foreach item="item" index="index" collection="array" open="(" separator="," close=")">
-			#{item}
-		</foreach>
-	</select>
+    <select id="getUsersFromArray"
+            resultType="org.apache.ibatis.submitted.collectionparameters.User">
+        select * from users where id in
+        <foreach item="item" index="index" collection="array" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
 
-	<select id="getUsersFromCollection"
-		resultType="org.apache.ibatis.submitted.collectionparameters.User">
-		select * from users where id in
-		<foreach item="item" index="index" collection="collection" open="(" separator="," close=")">
-			#{item}
-		</foreach>
-	</select>
+    <select id="getUsersFromCollection"
+            resultType="org.apache.ibatis.submitted.collectionparameters.User">
+        select * from users where id in
+        <foreach item="item" index="index" collection="collection" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
 
 
 </mapper>

@@ -21,10 +21,10 @@ package org.apache.ibatis.jdbc;
  */
 public class SQL extends AbstractSQL<SQL> {
 
-  //fluent API
-  @Override
-  public SQL getSelf() {
-    return this;
-  }
+    //fluent API
+    @Override
+    public SQL getSelf() {
+        return this;
+    }
 
 }

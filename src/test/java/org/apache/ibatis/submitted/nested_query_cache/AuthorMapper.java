@@ -19,6 +19,6 @@ import org.apache.ibatis.domain.blog.Author;
 
 public interface AuthorMapper {
 
-  Author selectAuthor(int id);
+    Author selectAuthor(int id);
 
 }

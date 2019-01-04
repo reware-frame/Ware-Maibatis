@@ -25,190 +25,197 @@ import org.apache.ibatis.type.TypeHandlerRegistry;
 
 /**
  * 参数映射
- * 
  */
 public class ParameterMapping {
 
-  private Configuration configuration;
+    private Configuration configuration;
 
-  //例子：#{property,javaType=int,jdbcType=NUMERIC}
-  
-  //property
-  private String property;
-  //mode
-  private ParameterMode mode;
-  //javaType=int
-  private Class<?> javaType = Object.class;
-  //jdbcType=NUMERIC
-  private JdbcType jdbcType;
-  //numericScale
-  private Integer numericScale;
-  private TypeHandler<?> typeHandler;
-  private String resultMapId;
-  //jdbcType=NUMERIC
-  private String jdbcTypeName;
-  private String expression;
+    //例子：#{property,javaType=int,jdbcType=NUMERIC}
 
-  private ParameterMapping() {
-  }
+    //property
+    private String property;
+    //mode
+    private ParameterMode mode;
+    //javaType=int
+    private Class<?> javaType = Object.class;
+    //jdbcType=NUMERIC
+    private JdbcType jdbcType;
+    //numericScale
+    private Integer numericScale;
+    private TypeHandler<?> typeHandler;
+    private String resultMapId;
+    //jdbcType=NUMERIC
+    private String jdbcTypeName;
+    private String expression;
 
-  //静态内部类，建造者模式
-  public static class Builder {
-    private ParameterMapping parameterMapping = new ParameterMapping();
-
-    public Builder(Configuration configuration, String property, TypeHandler<?> typeHandler) {
-      parameterMapping.configuration = configuration;
-      parameterMapping.property = property;
-      parameterMapping.typeHandler = typeHandler;
-      parameterMapping.mode = ParameterMode.IN;
+    private ParameterMapping() {
     }
 
-    public Builder(Configuration configuration, String property, Class<?> javaType) {
-      parameterMapping.configuration = configuration;
-      parameterMapping.property = property;
-      parameterMapping.javaType = javaType;
-      parameterMapping.mode = ParameterMode.IN;
-    }
+    //静态内部类，建造者模式
+    public static class Builder {
+        private ParameterMapping parameterMapping = new ParameterMapping();
 
-    public Builder mode(ParameterMode mode) {
-      parameterMapping.mode = mode;
-      return this;
-    }
-
-    public Builder javaType(Class<?> javaType) {
-      parameterMapping.javaType = javaType;
-      return this;
-    }
-
-    public Builder jdbcType(JdbcType jdbcType) {
-      parameterMapping.jdbcType = jdbcType;
-      return this;
-    }
-
-    public Builder numericScale(Integer numericScale) {
-      parameterMapping.numericScale = numericScale;
-      return this;
-    }
-
-    public Builder resultMapId(String resultMapId) {
-      parameterMapping.resultMapId = resultMapId;
-      return this;
-    }
-
-    public Builder typeHandler(TypeHandler<?> typeHandler) {
-      parameterMapping.typeHandler = typeHandler;
-      return this;
-    }
-
-    public Builder jdbcTypeName(String jdbcTypeName) {
-      parameterMapping.jdbcTypeName = jdbcTypeName;
-      return this;
-    }
-
-    public Builder expression(String expression) {
-      parameterMapping.expression = expression;
-      return this;
-    }
-
-    public ParameterMapping build() {
-      resolveTypeHandler();
-      validate();
-      return parameterMapping;
-    }
-
-    private void validate() {
-      if (ResultSet.class.equals(parameterMapping.javaType)) {
-        if (parameterMapping.resultMapId == null) { 
-          throw new IllegalStateException("Missing resultmap in property '"  
-              + parameterMapping.property + "'.  " 
-              + "Parameters of type java.sql.ResultSet require a resultmap.");
-        }            
-      } else {
-        if (parameterMapping.typeHandler == null) { 
-          throw new IllegalStateException("Type handler was null on parameter mapping for property '"  
-              + parameterMapping.property + "'.  " 
-              + "It was either not specified and/or could not be found for the javaType / jdbcType combination specified.");
+        public Builder(Configuration configuration, String property, TypeHandler<?> typeHandler) {
+            parameterMapping.configuration = configuration;
+            parameterMapping.property = property;
+            parameterMapping.typeHandler = typeHandler;
+            parameterMapping.mode = ParameterMode.IN;
         }
-      }
+
+        public Builder(Configuration configuration, String property, Class<?> javaType) {
+            parameterMapping.configuration = configuration;
+            parameterMapping.property = property;
+            parameterMapping.javaType = javaType;
+            parameterMapping.mode = ParameterMode.IN;
+        }
+
+        public Builder mode(ParameterMode mode) {
+            parameterMapping.mode = mode;
+            return this;
+        }
+
+        public Builder javaType(Class<?> javaType) {
+            parameterMapping.javaType = javaType;
+            return this;
+        }
+
+        public Builder jdbcType(JdbcType jdbcType) {
+            parameterMapping.jdbcType = jdbcType;
+            return this;
+        }
+
+        public Builder numericScale(Integer numericScale) {
+            parameterMapping.numericScale = numericScale;
+            return this;
+        }
+
+        public Builder resultMapId(String resultMapId) {
+            parameterMapping.resultMapId = resultMapId;
+            return this;
+        }
+
+        public Builder typeHandler(TypeHandler<?> typeHandler) {
+            parameterMapping.typeHandler = typeHandler;
+            return this;
+        }
+
+        public Builder jdbcTypeName(String jdbcTypeName) {
+            parameterMapping.jdbcTypeName = jdbcTypeName;
+            return this;
+        }
+
+        public Builder expression(String expression) {
+            parameterMapping.expression = expression;
+            return this;
+        }
+
+        public ParameterMapping build() {
+            resolveTypeHandler();
+            validate();
+            return parameterMapping;
+        }
+
+        private void validate() {
+            if (ResultSet.class.equals(parameterMapping.javaType)) {
+                if (parameterMapping.resultMapId == null) {
+                    throw new IllegalStateException("Missing resultmap in property '"
+                            + parameterMapping.property + "'.  "
+                            + "Parameters of type java.sql.ResultSet require a resultmap.");
+                }
+            } else {
+                if (parameterMapping.typeHandler == null) {
+                    throw new IllegalStateException("Type handler was null on parameter mapping for property '"
+                            + parameterMapping.property + "'.  "
+                            + "It was either not specified and/or could not be found for the javaType / jdbcType combination specified.");
+                }
+            }
+        }
+
+        private void resolveTypeHandler() {
+            //如果没有指定特殊的typeHandler，则根据javaType，jdbcType来查表确定一个默认的typeHandler
+            if (parameterMapping.typeHandler == null && parameterMapping.javaType != null) {
+                Configuration configuration = parameterMapping.configuration;
+                TypeHandlerRegistry typeHandlerRegistry = configuration.getTypeHandlerRegistry();
+                parameterMapping.typeHandler = typeHandlerRegistry.getTypeHandler(parameterMapping.javaType, parameterMapping.jdbcType);
+            }
+        }
+
     }
 
-    private void resolveTypeHandler() {
-        //如果没有指定特殊的typeHandler，则根据javaType，jdbcType来查表确定一个默认的typeHandler
-      if (parameterMapping.typeHandler == null && parameterMapping.javaType != null) {
-        Configuration configuration = parameterMapping.configuration;
-        TypeHandlerRegistry typeHandlerRegistry = configuration.getTypeHandlerRegistry();
-        parameterMapping.typeHandler = typeHandlerRegistry.getTypeHandler(parameterMapping.javaType, parameterMapping.jdbcType);
-      }
+    public String getProperty() {
+        return property;
     }
 
-  }
+    /**
+     * Used for handling output of callable statements
+     *
+     * @return
+     */
+    public ParameterMode getMode() {
+        return mode;
+    }
 
-  public String getProperty() {
-    return property;
-  }
+    /**
+     * Used for handling output of callable statements
+     *
+     * @return
+     */
+    public Class<?> getJavaType() {
+        return javaType;
+    }
 
-  /**
-   * Used for handling output of callable statements
-   * @return
-   */
-  public ParameterMode getMode() {
-    return mode;
-  }
+    /**
+     * Used in the UnknownTypeHandler in case there is no handler for the property type
+     *
+     * @return
+     */
+    public JdbcType getJdbcType() {
+        return jdbcType;
+    }
 
-  /**
-   * Used for handling output of callable statements
-   * @return
-   */
-  public Class<?> getJavaType() {
-    return javaType;
-  }
+    /**
+     * Used for handling output of callable statements
+     *
+     * @return
+     */
+    public Integer getNumericScale() {
+        return numericScale;
+    }
 
-  /**
-   * Used in the UnknownTypeHandler in case there is no handler for the property type
-   * @return
-   */
-  public JdbcType getJdbcType() {
-    return jdbcType;
-  }
+    /**
+     * Used when setting parameters to the PreparedStatement
+     *
+     * @return
+     */
+    public TypeHandler<?> getTypeHandler() {
+        return typeHandler;
+    }
 
-  /**
-   * Used for handling output of callable statements
-   * @return
-   */
-  public Integer getNumericScale() {
-    return numericScale;
-  }
+    /**
+     * Used for handling output of callable statements
+     *
+     * @return
+     */
+    public String getResultMapId() {
+        return resultMapId;
+    }
 
-  /**
-   * Used when setting parameters to the PreparedStatement
-   * @return
-   */
-  public TypeHandler<?> getTypeHandler() {
-    return typeHandler;
-  }
+    /**
+     * Used for handling output of callable statements
+     *
+     * @return
+     */
+    public String getJdbcTypeName() {
+        return jdbcTypeName;
+    }
 
-  /**
-   * Used for handling output of callable statements
-   * @return
-   */
-  public String getResultMapId() {
-    return resultMapId;
-  }
-
-  /**
-   * Used for handling output of callable statements
-   * @return
-   */
-  public String getJdbcTypeName() {
-    return jdbcTypeName;
-  }
-
-  /**
-   * Not used
-   * @return
-   */
-  public String getExpression() {
-    return expression;
-  }
+    /**
+     * Not used
+     *
+     * @return
+     */
+    public String getExpression() {
+        return expression;
+    }
 
 }

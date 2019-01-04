@@ -15,31 +15,31 @@
        limitations under the License.
 -->
 <!DOCTYPE configuration
-    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
 
-<!--
- 	<typeHandlers>
-		<typeHandler handler="org.apache.ibatis.submitted.uuid_test.UUIDTypeHandler"/>
-	</typeHandlers>
- -->
-	<environments default="development">
-		<environment id="development">
-			<transactionManager type="JDBC">
-				<property name="" value="" />
-			</transactionManager>
-			<dataSource type="UNPOOLED">
-				<property name="driver" value="org.hsqldb.jdbcDriver" />
-				<property name="url" value="jdbc:hsqldb:mem:uuid_test" />
-				<property name="username" value="sa" />
-			</dataSource>
-		</environment>
-	</environments>
+    <!--
+         <typeHandlers>
+            <typeHandler handler="org.apache.ibatis.submitted.uuid_test.UUIDTypeHandler"/>
+        </typeHandlers>
+     -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC">
+                <property name="" value=""/>
+            </transactionManager>
+            <dataSource type="UNPOOLED">
+                <property name="driver" value="org.hsqldb.jdbcDriver"/>
+                <property name="url" value="jdbc:hsqldb:mem:uuid_test"/>
+                <property name="username" value="sa"/>
+            </dataSource>
+        </environment>
+    </environments>
 
-	<mappers>
-		<mapper class="org.apache.ibatis.submitted.uuid_test.Mapper" />
-	</mappers>
+    <mappers>
+        <mapper class="org.apache.ibatis.submitted.uuid_test.Mapper"/>
+    </mappers>
 
 </configuration>

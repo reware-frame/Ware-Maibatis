@@ -18,19 +18,18 @@ package org.apache.ibatis.session;
 
 /**
  * 结果上下文
- * 
  */
 public interface ResultContext {
 
-  //获取结果
-  Object getResultObject();
+    //获取结果
+    Object getResultObject();
 
-  //获取记录数
-  int getResultCount();
+    //获取记录数
+    int getResultCount();
 
-  boolean isStopped();
+    boolean isStopped();
 
-  //停止?
-  void stop();
+    //停止?
+    void stop();
 
 }

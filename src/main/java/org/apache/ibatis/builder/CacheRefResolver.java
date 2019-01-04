@@ -20,19 +20,18 @@ import org.apache.ibatis.cache.Cache;
 
 /**
  * 缓存引用解析器
- *
  */
 public class CacheRefResolver {
-  private final MapperBuilderAssistant assistant;
-  private final String cacheRefNamespace;
+    private final MapperBuilderAssistant assistant;
+    private final String cacheRefNamespace;
 
-  public CacheRefResolver(MapperBuilderAssistant assistant, String cacheRefNamespace) {
-    this.assistant = assistant;
-    this.cacheRefNamespace = cacheRefNamespace;
-  }
+    public CacheRefResolver(MapperBuilderAssistant assistant, String cacheRefNamespace) {
+        this.assistant = assistant;
+        this.cacheRefNamespace = cacheRefNamespace;
+    }
 
-  public Cache resolveCacheRef() {
-      //反调MapperBuilderAssistant解析
-    return assistant.useCacheRef(cacheRefNamespace);
-  }
+    public Cache resolveCacheRef() {
+        //反调MapperBuilderAssistant解析
+        return assistant.useCacheRef(cacheRefNamespace);
+    }
 }

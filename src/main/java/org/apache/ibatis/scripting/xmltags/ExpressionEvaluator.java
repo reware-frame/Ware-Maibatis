@@ -30,51 +30,51 @@ import org.apache.ibatis.builder.BuilderException;
  */
 public class ExpressionEvaluator {
 
-  //表达式求布尔值，比如username == 'cbegin'
-  public boolean evaluateBoolean(String expression, Object parameterObject) {
-	//非常简单，就是调用ognl
-    Object value = OgnlCache.getValue(expression, parameterObject);
-    if (value instanceof Boolean) {
-      //如果是Boolean
-      return (Boolean) value;
-    }
-    if (value instanceof Number) {
-        //如果是Number，判断不为0
-        return !new BigDecimal(String.valueOf(value)).equals(BigDecimal.ZERO);
-    }
-    //否则判断不为null
-    return value != null;
-  }
-
-  //解析表达式到一个Iterable,核心是ognl
-  public Iterable<?> evaluateIterable(String expression, Object parameterObject) {
-	//原生的ognl很强大，OgnlCache.getValue直接就可以返回一个Iterable型或数组型或Map型了
-    Object value = OgnlCache.getValue(expression, parameterObject);
-    if (value == null) {
-      throw new BuilderException("The expression '" + expression + "' evaluated to a null value.");
-    }
-    if (value instanceof Iterable) {
-      return (Iterable<?>) value;
-    }
-    if (value.getClass().isArray()) {
-    	//如果是array，则把他变成一个List<Object>
-    	//注释下面提到了，不能用Arrays.asList()，因为array可能是基本型，这样会出ClassCastException，
-    	//见https://code.google.com/p/mybatis/issues/detail?id=209
-        // the array may be primitive, so Arrays.asList() may throw
-        // a ClassCastException (issue 209).  Do the work manually
-        // Curse primitives! :) (JGB)
-        int size = Array.getLength(value);
-        List<Object> answer = new ArrayList<Object>();
-        for (int i = 0; i < size; i++) {
-            Object o = Array.get(value, i);
-            answer.add(o);
+    //表达式求布尔值，比如username == 'cbegin'
+    public boolean evaluateBoolean(String expression, Object parameterObject) {
+        //非常简单，就是调用ognl
+        Object value = OgnlCache.getValue(expression, parameterObject);
+        if (value instanceof Boolean) {
+            //如果是Boolean
+            return (Boolean) value;
         }
-        return answer;
+        if (value instanceof Number) {
+            //如果是Number，判断不为0
+            return !new BigDecimal(String.valueOf(value)).equals(BigDecimal.ZERO);
+        }
+        //否则判断不为null
+        return value != null;
     }
-    if (value instanceof Map) {
-      return ((Map) value).entrySet();
+
+    //解析表达式到一个Iterable,核心是ognl
+    public Iterable<?> evaluateIterable(String expression, Object parameterObject) {
+        //原生的ognl很强大，OgnlCache.getValue直接就可以返回一个Iterable型或数组型或Map型了
+        Object value = OgnlCache.getValue(expression, parameterObject);
+        if (value == null) {
+            throw new BuilderException("The expression '" + expression + "' evaluated to a null value.");
+        }
+        if (value instanceof Iterable) {
+            return (Iterable<?>) value;
+        }
+        if (value.getClass().isArray()) {
+            //如果是array，则把他变成一个List<Object>
+            //注释下面提到了，不能用Arrays.asList()，因为array可能是基本型，这样会出ClassCastException，
+            //见https://code.google.com/p/mybatis/issues/detail?id=209
+            // the array may be primitive, so Arrays.asList() may throw
+            // a ClassCastException (issue 209).  Do the work manually
+            // Curse primitives! :) (JGB)
+            int size = Array.getLength(value);
+            List<Object> answer = new ArrayList<Object>();
+            for (int i = 0; i < size; i++) {
+                Object o = Array.get(value, i);
+                answer.add(o);
+            }
+            return answer;
+        }
+        if (value instanceof Map) {
+            return ((Map) value).entrySet();
+        }
+        throw new BuilderException("Error evaluating expression '" + expression + "'.  Return value (" + value + ") was not iterable.");
     }
-    throw new BuilderException("Error evaluating expression '" + expression + "'.  Return value (" + value + ") was not iterable.");
-  }
 
 }

@@ -1017,13 +1017,13 @@ public class Code {
     public static final Code _999 = new Code("999");
     public static final Code _1000 = new Code("1000");
 
-  private String value;
+    private String value;
 
-  public Code(String aValue) {
-    value = aValue;
-  }
+    public Code(String aValue) {
+        value = aValue;
+    }
 
-  public String getValue() {
-    return value;
-  }
+    public String getValue() {
+        return value;
+    }
 }

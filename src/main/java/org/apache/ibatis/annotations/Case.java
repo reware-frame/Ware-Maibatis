@@ -24,11 +24,11 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Case {
-  String value();
+    String value();
 
-  Class<?> type();
+    Class<?> type();
 
-  Result[] results() default {};
+    Result[] results() default {};
 
-  Arg[] constructArgs() default {};
+    Arg[] constructArgs() default {};
 }

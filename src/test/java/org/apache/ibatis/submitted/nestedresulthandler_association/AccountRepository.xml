@@ -17,17 +17,19 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.apache.ibatis.submitted.nestedresulthandler_association.AccountRepository">
     <resultMap id="resultMapAccount" type="org.apache.ibatis.submitted.nestedresulthandler_association.Account">
-        <id property="accountUuid" column="account_uuid" />
-        <result property="accountName" column="account_name" />
-        <result property="birthDate" column="birth_date" />
-        <association property="address" javaType="org.apache.ibatis.submitted.nestedresulthandler_association.AccountAddress">
-            <id property="accountUuid" column="account_uuid" />
-            <result property="zipCode" column="zip_code" />
-            <result property="address" column="address" />
+        <id property="accountUuid" column="account_uuid"/>
+        <result property="accountName" column="account_name"/>
+        <result property="birthDate" column="birth_date"/>
+        <association property="address"
+                     javaType="org.apache.ibatis.submitted.nestedresulthandler_association.AccountAddress">
+            <id property="accountUuid" column="account_uuid"/>
+            <result property="zipCode" column="zip_code"/>
+            <result property="address" column="address"/>
         </association>
     </resultMap>
     <select id="collectPageByBirthMonth" resultMap="resultMapAccount" resultOrdered="true">
         <![CDATA[
+
         SELECT
           a.account_uuid
           ,a.account_name
@@ -43,6 +45,7 @@
           a.birth_date >= #{birthMonth} AND a.birth_date < ADD_MONTHS(#{birthMonth}, 1)
         ORDER BY
           a.account_uuid
+
         ]]>
     </select>
 </mapper>

@@ -24,19 +24,18 @@ import org.apache.ibatis.mapping.MappedStatement;
 /**
  * 不用键值生成器
  * MappedStatement有一个keyGenerator属性，默认的就用NoKeyGenerator
- *
  */
 public class NoKeyGenerator implements KeyGenerator {
 
-  //都是空方法
-  @Override
-  public void processBefore(Executor executor, MappedStatement ms, Statement stmt, Object parameter) {
-    // Do Nothing
-  }
+    //都是空方法
+    @Override
+    public void processBefore(Executor executor, MappedStatement ms, Statement stmt, Object parameter) {
+        // Do Nothing
+    }
 
-  @Override
-  public void processAfter(Executor executor, MappedStatement ms, Statement stmt, Object parameter) {
-    // Do Nothing
-  }
+    @Override
+    public void processAfter(Executor executor, MappedStatement ms, Statement stmt, Object parameter) {
+        // Do Nothing
+    }
 
 }
