@@ -24,53 +24,53 @@ import org.apache.logging.log4j.MarkerManager;
 /**
  * @author Eduardo Macarron
  */
+
 /**
  * log4j2的logger，和slf4j一样，也是代理模式，底下的Log4j2AbstractLoggerImpl或Log4j2Impl才是真正的log
- *
  */
 public class Log4j2LoggerImpl implements Log {
-  
-  private static Marker MARKER = MarkerManager.getMarker(LogFactory.MARKER);
 
-  private Logger log;
+    private static Marker MARKER = MarkerManager.getMarker(LogFactory.MARKER);
 
-  public Log4j2LoggerImpl(Logger logger) {
-    log = logger;
-  }
+    private Logger log;
 
-  @Override
-  public boolean isDebugEnabled() {
-    return log.isDebugEnabled();
-  }
+    public Log4j2LoggerImpl(Logger logger) {
+        log = logger;
+    }
 
-  @Override
-  public boolean isTraceEnabled() {
-    return log.isTraceEnabled();
-  }
+    @Override
+    public boolean isDebugEnabled() {
+        return log.isDebugEnabled();
+    }
 
-  @Override
-  public void error(String s, Throwable e) {
-    log.error(MARKER, s, e);
-  }
+    @Override
+    public boolean isTraceEnabled() {
+        return log.isTraceEnabled();
+    }
 
-  @Override
-  public void error(String s) {
-    log.error(MARKER, s);
-  }
+    @Override
+    public void error(String s, Throwable e) {
+        log.error(MARKER, s, e);
+    }
 
-  @Override
-  public void debug(String s) {
-    log.debug(MARKER, s);
-  }
+    @Override
+    public void error(String s) {
+        log.error(MARKER, s);
+    }
 
-  @Override
-  public void trace(String s) {
-    log.trace(MARKER, s);
-  }
+    @Override
+    public void debug(String s) {
+        log.debug(MARKER, s);
+    }
 
-  @Override
-  public void warn(String s) {
-    log.warn(MARKER, s);
-  }
+    @Override
+    public void trace(String s) {
+        log.trace(MARKER, s);
+    }
+
+    @Override
+    public void warn(String s) {
+        log.warn(MARKER, s);
+    }
 
 }
