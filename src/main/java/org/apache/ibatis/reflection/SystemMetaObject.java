@@ -21,9 +21,7 @@ import org.apache.ibatis.reflection.factory.ObjectFactory;
 import org.apache.ibatis.reflection.wrapper.DefaultObjectWrapperFactory;
 import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 一些系统级别的元对象
  *

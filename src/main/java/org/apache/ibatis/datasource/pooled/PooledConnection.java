@@ -23,9 +23,7 @@ import java.sql.SQLException;
 
 import org.apache.ibatis.reflection.ExceptionUtil;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 池化的连接
  */

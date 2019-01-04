@@ -15,9 +15,7 @@
  */
 package org.apache.ibatis.parsing;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 普通记号解析器，处理#{}和${}参数
  * 

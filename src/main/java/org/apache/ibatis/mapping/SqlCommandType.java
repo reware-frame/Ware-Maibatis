@@ -15,9 +15,7 @@
  */
 package org.apache.ibatis.mapping;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * SQL命令类型
  *

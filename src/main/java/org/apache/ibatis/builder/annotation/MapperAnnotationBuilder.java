@@ -83,9 +83,7 @@ import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.UnknownTypeHandler;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 注解方式构建mapper，一般不用，可以暂时忽略
  */

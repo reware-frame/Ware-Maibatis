@@ -21,9 +21,7 @@ import org.apache.ibatis.cache.Cache;
 import org.apache.ibatis.logging.Log;
 import org.apache.ibatis.logging.LogFactory;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 日志缓存
  * 添加功能：取缓存时打印命中率

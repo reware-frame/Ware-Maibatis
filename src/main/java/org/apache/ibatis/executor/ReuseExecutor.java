@@ -32,9 +32,7 @@ import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.transaction.Transaction;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 可重用的执行器
  */

@@ -23,10 +23,7 @@ import java.util.Map;
 import org.apache.ibatis.reflection.ExceptionUtil;
 import org.apache.ibatis.session.SqlSession;
 
-/**
- * @author Clinton Begin
- * @author Eduardo Macarron
- */
+
 /**
  * 映射器代理，代理模式
  *

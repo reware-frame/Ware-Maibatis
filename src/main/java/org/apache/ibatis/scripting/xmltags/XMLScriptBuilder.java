@@ -29,9 +29,7 @@ import org.apache.ibatis.session.Configuration;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * XML脚本构建器
  */

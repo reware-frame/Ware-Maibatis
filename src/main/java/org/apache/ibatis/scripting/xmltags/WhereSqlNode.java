@@ -20,9 +20,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.Configuration;
 
-/**
- * @author Clinton Begin
- */
+
 public class WhereSqlNode extends TrimSqlNode {
 
   private static List<String> prefixList = Arrays.asList("AND ","OR ","AND\n", "OR\n", "AND\r", "OR\r", "AND\t", "OR\t");

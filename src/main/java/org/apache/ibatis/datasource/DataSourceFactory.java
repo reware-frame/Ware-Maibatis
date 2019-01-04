@@ -18,9 +18,7 @@ package org.apache.ibatis.datasource;
 import java.util.Properties;
 import javax.sql.DataSource;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 数据源工厂
  * 有三种内建的数据源类型 UNPOOLED POOLED JNDI

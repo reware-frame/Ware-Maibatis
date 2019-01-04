@@ -33,9 +33,7 @@ import org.apache.ibatis.transaction.Transaction;
  *
  * @see ManagedTransactionFactory
  */
-/**
- * @author Clinton Begin
- */
+
 /**
  * 托管事务,交给容器来管理事务
  * MANAGED – 这个配置几乎没做什么。

@@ -25,9 +25,7 @@ import java.util.Set;
 
 import org.apache.ibatis.reflection.ExceptionUtil;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 插件,用的代理模式
  *

@@ -30,9 +30,7 @@ import java.util.TreeSet;
 
 import org.apache.ibatis.reflection.ReflectionException;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 默认对象工厂，所有对象都要由工厂来产生
  * 

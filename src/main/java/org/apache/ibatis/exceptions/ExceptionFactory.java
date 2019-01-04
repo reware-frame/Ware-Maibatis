@@ -17,9 +17,7 @@ package org.apache.ibatis.exceptions;
 
 import org.apache.ibatis.executor.ErrorContext;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 
  * 异常工厂

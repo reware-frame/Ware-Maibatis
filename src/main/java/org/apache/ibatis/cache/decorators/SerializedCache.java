@@ -29,9 +29,7 @@ import org.apache.ibatis.cache.Cache;
 import org.apache.ibatis.cache.CacheException;
 import org.apache.ibatis.io.Resources;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 序列化缓存
  * 用途是先将对象序列化成2进制，再缓存,好处是将对象压缩了，省内存

@@ -19,9 +19,7 @@ import java.util.Locale;
 
 import org.apache.ibatis.reflection.ReflectionException;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 属性命名器
  * 

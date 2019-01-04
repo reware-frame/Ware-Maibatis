@@ -26,9 +26,7 @@ import javax.sql.DataSource;
 import org.apache.ibatis.datasource.DataSourceException;
 import org.apache.ibatis.datasource.DataSourceFactory;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * JNDI数据源工厂
  * 这个数据源的实现是为了使用如 Spring 或应用服务器这类的容器, 容器可以集 中或在外部配置数据源,然后放置一个 JNDI 上下文的引用。

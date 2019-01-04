@@ -19,9 +19,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 
 import org.apache.ibatis.cache.Cache;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 同步缓存
  * 防止多线程问题

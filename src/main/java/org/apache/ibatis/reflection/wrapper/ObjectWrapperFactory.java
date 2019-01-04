@@ -17,9 +17,7 @@ package org.apache.ibatis.reflection.wrapper;
 
 import org.apache.ibatis.reflection.MetaObject;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 对象包装器工厂
  * 

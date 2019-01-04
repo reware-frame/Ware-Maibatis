@@ -31,10 +31,7 @@ import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.transaction.Transaction;
 
-/**
- * @author Clinton Begin
- * @author Eduardo Macarron
- */
+
 /**
  * 二级缓存执行器
  */

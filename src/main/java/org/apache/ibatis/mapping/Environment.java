@@ -19,9 +19,7 @@ import javax.sql.DataSource;
 
 import org.apache.ibatis.transaction.TransactionFactory;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 环境
  * 决定加载哪种环境(开发环境/生产环境)

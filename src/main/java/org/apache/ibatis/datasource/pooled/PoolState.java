@@ -18,9 +18,7 @@ package org.apache.ibatis.datasource.pooled;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 池状态
  */

@@ -36,9 +36,7 @@ import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 默认SqlSession实现
  *

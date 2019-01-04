@@ -15,9 +15,7 @@
  */
 package org.apache.ibatis.session;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 结果处理器
  * 

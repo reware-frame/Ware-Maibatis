@@ -20,9 +20,7 @@ import java.util.Map;
 
 import org.apache.ibatis.session.Configuration;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 鉴别器
  * 有时一个查询也许返回很多不同数据类型的结果集。

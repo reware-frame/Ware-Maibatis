@@ -42,9 +42,7 @@ import org.apache.ibatis.session.LocalCacheScope;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.type.JdbcType;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * XML配置构建器，建造者模式,继承BaseBuilder
  *

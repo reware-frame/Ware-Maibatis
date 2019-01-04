@@ -17,9 +17,7 @@ package org.apache.ibatis.datasource;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 数据源异常,继承PersistenceException
  */

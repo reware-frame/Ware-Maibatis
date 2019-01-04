@@ -20,9 +20,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 结果集处理器
  * 

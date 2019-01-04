@@ -17,9 +17,7 @@ package org.apache.ibatis.reflection.invoker;
 
 import java.lang.reflect.InvocationTargetException;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 调用者
  * 

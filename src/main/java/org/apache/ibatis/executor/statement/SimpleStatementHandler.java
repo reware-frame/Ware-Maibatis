@@ -30,9 +30,7 @@ import org.apache.ibatis.mapping.MappedStatement;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 简单语句处理器(STATEMENT)
  * 

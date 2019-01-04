@@ -29,9 +29,7 @@ import org.apache.ibatis.transaction.TransactionFactory;
  *
  * @see ManagedTransaction
  */
-/**
- * @author Clinton Begin
- */
+
 /**
  * 托管事务工厂
  * 默认 情况下它会关闭连接。

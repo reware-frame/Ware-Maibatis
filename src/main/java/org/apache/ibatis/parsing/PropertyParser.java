@@ -17,9 +17,7 @@ package org.apache.ibatis.parsing;
 
 import java.util.Properties;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 属性解析器
  */

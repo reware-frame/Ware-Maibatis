@@ -17,9 +17,7 @@ package org.apache.ibatis.session;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * SqlSession异常
  *

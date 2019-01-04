@@ -34,9 +34,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.transaction.Transaction;
 import org.apache.ibatis.transaction.TransactionFactory;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 结果延迟加载器
  * 

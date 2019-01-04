@@ -15,9 +15,7 @@
  */
 package org.apache.ibatis.cache;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * Null值缓存key
  * 

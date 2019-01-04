@@ -17,9 +17,7 @@ package org.apache.ibatis.reflection.property;
 
 import java.lang.reflect.Field;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 属性复制器
  * 

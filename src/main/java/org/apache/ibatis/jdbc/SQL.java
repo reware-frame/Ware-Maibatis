@@ -15,9 +15,7 @@
  */
 package org.apache.ibatis.jdbc;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * SQL,干货都在AbstractSQL里
  */

@@ -15,9 +15,7 @@
  */
 package org.apache.ibatis.scripting.xmltags;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * if SQL节点
  *

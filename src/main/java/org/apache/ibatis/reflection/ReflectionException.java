@@ -17,9 +17,7 @@ package org.apache.ibatis.reflection;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 反射异常
  * 

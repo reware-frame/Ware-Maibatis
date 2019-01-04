@@ -32,9 +32,7 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.type.TypeHandler;
 import org.apache.ibatis.type.TypeHandlerRegistry;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * SQL运行器,可以运行SQL，如select，作为单元测试的正式测试
  * 这个类其实可以被所有项目的单元测试作为工具所利用

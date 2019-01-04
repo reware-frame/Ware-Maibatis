@@ -17,9 +17,7 @@ package org.apache.ibatis.parsing;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 解析异常
  */

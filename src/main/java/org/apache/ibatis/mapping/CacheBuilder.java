@@ -33,9 +33,7 @@ import org.apache.ibatis.cache.impl.PerpetualCache;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 缓存构建器,建造者模式
  * 

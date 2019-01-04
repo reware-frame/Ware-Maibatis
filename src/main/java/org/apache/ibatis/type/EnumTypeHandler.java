@@ -20,9 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * @author Clinton Begin
- */
+
 public class EnumTypeHandler<E extends Enum<E>> extends BaseTypeHandler<E> {
 
   private Class<E> type;

@@ -17,9 +17,7 @@ package org.apache.ibatis.session;
 
 import java.sql.Connection;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 事务隔离级别，是一个枚举型
  * 

@@ -31,10 +31,7 @@ import javax.sql.DataSource;
 
 import org.apache.ibatis.io.Resources;
 
-/**
- * @author Clinton Begin
- * @author Eduardo Macarron
- */
+
 /**
  * 没有池化的数据源
  */

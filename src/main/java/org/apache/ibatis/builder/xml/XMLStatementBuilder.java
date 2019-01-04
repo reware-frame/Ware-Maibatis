@@ -33,9 +33,7 @@ import org.apache.ibatis.parsing.XNode;
 import org.apache.ibatis.scripting.LanguageDriver;
 import org.apache.ibatis.session.Configuration;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * XML语句构建器，建造者模式,继承BaseBuilder
  *

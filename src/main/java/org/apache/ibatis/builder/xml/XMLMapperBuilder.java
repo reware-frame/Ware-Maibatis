@@ -47,9 +47,7 @@ import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.type.JdbcType;
 import org.apache.ibatis.type.TypeHandler;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * XML映射构建器，建造者模式,继承BaseBuilder
  *

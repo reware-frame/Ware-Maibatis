@@ -19,9 +19,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 
 import org.apache.ibatis.cache.Cache;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 定时调度缓存
  * 目的是每一小时清空一下缓存

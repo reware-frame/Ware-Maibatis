@@ -17,9 +17,7 @@ package org.apache.ibatis.transaction;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 事务异常,继承PersistenceException
  */

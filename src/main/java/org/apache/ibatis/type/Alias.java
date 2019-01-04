@@ -20,9 +20,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 别名
  * 2种方式可以注册别名

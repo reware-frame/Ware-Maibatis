@@ -17,9 +17,7 @@ package org.apache.ibatis.reflection.property;
 
 import java.util.Iterator;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 属性分解为标记，迭代子模式
  * 如person[0].birthdate.year，将依次取得person[0], birthdate, year

@@ -15,9 +15,7 @@
  */
 package org.apache.ibatis.scripting.xmltags;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 静态文本SQL节点
  */

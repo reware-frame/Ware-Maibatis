@@ -17,9 +17,7 @@ package org.apache.ibatis.type;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 类型异常
  *

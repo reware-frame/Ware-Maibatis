@@ -22,9 +22,7 @@ import java.util.concurrent.locks.ReadWriteLock;
 import org.apache.ibatis.cache.Cache;
 import org.apache.ibatis.cache.CacheException;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 永久缓存
  * 一旦存入就一直保持

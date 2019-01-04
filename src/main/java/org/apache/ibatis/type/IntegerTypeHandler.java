@@ -20,9 +20,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * Integer类型处理器
  * 调用PreparedStatement.setInt, ResultSet.getInt, CallableStatement.getInt

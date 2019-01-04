@@ -39,9 +39,7 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * XPath解析器，用的都是JDK的类包,封装了一下，使得使用起来更方便
  *

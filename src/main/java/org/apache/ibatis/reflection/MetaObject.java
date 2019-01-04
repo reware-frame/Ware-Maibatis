@@ -27,9 +27,7 @@ import org.apache.ibatis.reflection.wrapper.MapWrapper;
 import org.apache.ibatis.reflection.wrapper.ObjectWrapper;
 import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 元对象,各种get，set方法有点ognl表达式的味道
  * 可以参考MetaObjectTest来跟踪调试，基本上用到了reflection包下所有的类

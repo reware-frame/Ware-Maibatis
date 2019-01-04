@@ -33,9 +33,7 @@ import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.type.JdbcType;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 存储过程语句处理器(CALLABLE)
  * 

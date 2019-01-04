@@ -28,9 +28,7 @@ import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.type.JdbcType;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * SQL源码构建器
  * 

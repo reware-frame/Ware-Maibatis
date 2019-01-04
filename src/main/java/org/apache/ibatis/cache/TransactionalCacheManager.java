@@ -20,9 +20,7 @@ import java.util.Map;
 
 import org.apache.ibatis.cache.decorators.TransactionalCache;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 事务缓存管理器，被CachingExecutor使用
  *

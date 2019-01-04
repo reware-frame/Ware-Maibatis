@@ -20,9 +20,7 @@ import java.sql.Statement;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.mapping.MappedStatement;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 不用键值生成器
  * MappedStatement有一个keyGenerator属性，默认的就用NoKeyGenerator

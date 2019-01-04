@@ -20,9 +20,7 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 缓存key
  * 一般缓存框架的数据结构基本上都是 Key-Value 方式存储，

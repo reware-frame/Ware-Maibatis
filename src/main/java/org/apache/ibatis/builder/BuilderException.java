@@ -17,9 +17,7 @@ package org.apache.ibatis.builder;
 
 import org.apache.ibatis.exceptions.PersistenceException;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 构建异常,继承PersistenceException，没啥好说的，就是语义分类
  * 

@@ -22,9 +22,7 @@ import java.sql.SQLException;
 import java.sql.Time;
 import java.util.Date;
 
-/**
- * @author Clinton Begin
- */
+
 public class TimeOnlyTypeHandler extends BaseTypeHandler<Date> {
 
   @Override

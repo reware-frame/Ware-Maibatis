@@ -24,9 +24,7 @@ import org.apache.ibatis.datasource.DataSourceFactory;
 import org.apache.ibatis.reflection.MetaObject;
 import org.apache.ibatis.reflection.SystemMetaObject;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 没有池化的数据源工厂
  */

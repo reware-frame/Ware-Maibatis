@@ -29,9 +29,7 @@ import org.apache.ibatis.transaction.TransactionFactory;
  *
  * @see JdbcTransaction
  */
-/**
- * @author Clinton Begin
- */
+
 /**
  * JdbcTransaction工厂
  */

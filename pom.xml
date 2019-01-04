@@ -24,11 +24,11 @@
         <version>29</version>
     </parent>
 
-    <artifactId>mybatis</artifactId>
+    <artifactId>maibatis</artifactId>
     <version>3.3.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>mybatis</name>
+    <name>maibatis</name>
     <description>
         The MyBatis data mapper framework makes it easier to use a relational database with object-oriented
         applications. MyBatis couples objects with stored procedures or SQL statements using a XML descriptor or
@@ -110,14 +110,17 @@
         <developerConnection>scm:git:git+ssh://git@github.com/mybatis/mybatis-3.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
+
     <issueManagement>
         <system>GitHub Issue Management</system>
         <url>https://github.com/mybatis/mybatis-3/issues</url>
     </issueManagement>
+
     <ciManagement>
         <system>Travis CI</system>
         <url>https://travis-ci.org/mybatis/mybatis-3/</url>
     </ciManagement>
+
     <distributionManagement>
         <site>
             <id>github</id>
@@ -330,6 +333,7 @@
                             <exclude>org/apache/ibatis/javassist/**/*.class</exclude>
                         </excludes>
                     </instrumentation>
+                    <check/>
                 </configuration>
                 <executions>
                     <execution>

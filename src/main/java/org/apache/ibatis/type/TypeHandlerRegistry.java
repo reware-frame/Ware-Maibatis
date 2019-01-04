@@ -30,9 +30,7 @@ import java.util.Set;
 
 import org.apache.ibatis.io.ResolverUtil;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 类型处理器注册机
  * 

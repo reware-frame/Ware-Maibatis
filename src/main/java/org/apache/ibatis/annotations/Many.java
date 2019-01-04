@@ -22,9 +22,7 @@ import java.lang.annotation.Target;
 
 import org.apache.ibatis.mapping.FetchType;
 
-/**
- * @author Clinton Begin
- */
+
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Many {

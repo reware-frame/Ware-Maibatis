@@ -17,9 +17,7 @@ package org.apache.ibatis.mapping;
 
 import java.sql.ResultSet;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 
  * 结果集类型

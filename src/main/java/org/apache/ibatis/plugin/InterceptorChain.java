@@ -19,9 +19,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 拦截器链
  *

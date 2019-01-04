@@ -15,9 +15,7 @@
  */
 package org.apache.ibatis.exceptions;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 
  * 持久化异常

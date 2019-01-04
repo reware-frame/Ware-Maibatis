@@ -17,9 +17,7 @@ package org.apache.ibatis.scripting.xmltags;
 
 import java.util.List;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 混合SQL节点
  * 

@@ -22,9 +22,7 @@ import org.apache.ibatis.parsing.TokenHandler;
 import org.apache.ibatis.scripting.ScriptingException;
 import org.apache.ibatis.type.SimpleTypeRegistry;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 文本SQL节点（CDATA|TEXT）
  *

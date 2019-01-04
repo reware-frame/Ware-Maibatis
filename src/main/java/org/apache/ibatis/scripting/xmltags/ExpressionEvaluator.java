@@ -23,9 +23,7 @@ import java.util.Map;
 
 import org.apache.ibatis.builder.BuilderException;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 表达式求值器
  * 可参考ExpressionEvaluatorTest

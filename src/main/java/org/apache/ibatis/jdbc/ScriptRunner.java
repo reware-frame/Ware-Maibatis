@@ -25,9 +25,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 脚本运行器,可以运行SQL脚本，如建表，插入数据，作为单元测试的前期准备
  * 这个类其实可以被所有项目的单元测试作为工具所利用

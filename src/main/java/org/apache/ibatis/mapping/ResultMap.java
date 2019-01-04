@@ -24,9 +24,7 @@ import java.util.Set;
 
 import org.apache.ibatis.session.Configuration;
 
-/**
- * @author Clinton Begin
- */
+
 /**
  * 结果映射
  * MyBatis 中最重要最强大的元素
