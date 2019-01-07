@@ -21,7 +21,7 @@ package org.apache.ibatis.parsing;
  */
 public class GenericTokenParser {
 
-    //有一个开始和结束记号
+    // 有一个开始和结束记号
     private final String openToken;
     private final String closeToken;
     //记号处理器
@@ -33,6 +33,9 @@ public class GenericTokenParser {
         this.handler = handler;
     }
 
+    /**
+     * 解析 '${' 和 '}' 之间的字符串，进行填充
+     */
     public String parse(String text) {
         StringBuilder builder = new StringBuilder();
         if (text != null && text.length() > 0) {

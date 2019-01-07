@@ -240,7 +240,13 @@ public class XPathParser {
 
     private Document createDocument(InputSource inputSource) {
         // important: this must only be called AFTER common constructor
+        // mybatis源代码基本上没有什么注释，但是上面这行注释是源代码中自带的。
+        // 那为什么必须在调用commonConstructor函数后才能调用这个函数呢？因为这个函数里面用到了两个属性：validation和entityResolver
+        // 如果在这两个属性没有设置前就调用这个函数，就可能会导致这个类内部属性冲突
         try {
+            //创建document时用到了两个类：DocumentBuilderFactory和DocumentBuilder。
+            //为什么设置这两个类的这些属性，这些属性有什么作用。要完全介绍清楚需要不少篇幅，在这里就不做介绍了，
+
             //这个是DOM解析方式
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             factory.setValidating(validation);
