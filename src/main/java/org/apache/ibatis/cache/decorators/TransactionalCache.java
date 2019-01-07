@@ -38,7 +38,7 @@ import org.apache.ibatis.cache.Cache;
 /**
  * 事务缓存
  * 一次性存入多个缓存，移除多个缓存
- *
+ * TODO 有疑问
  */
 public class TransactionalCache implements Cache {
 

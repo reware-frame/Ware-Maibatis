@@ -33,6 +33,10 @@ import org.apache.ibatis.cache.CacheException;
  *
  * @author Eduardo Macarron
  */
+
+/**
+ * 当元素在缓存中找不到时，它会在缓存键上设置一个锁。这样，其他线程将等待这个元素被填充，而不是命中数据库。
+ */
 public class BlockingCache implements Cache {
 
     private long timeout;

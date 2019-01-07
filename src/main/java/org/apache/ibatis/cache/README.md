@@ -1,5 +1,11 @@
 ## cache 缓存
 
+### CacheKey 计算缓存对象的 key
+
+MyBatis 对于其 Key 的生成采取规则为：[mappedStementId + offset + limit + SQL + queryParams + environment]生成一个哈希码
+
+------------------------------------------
+
 使用委托模式，只维护一个集合，其他的委托给Cache执行
 
 ### 1. FIFO 先进先出缓存
@@ -41,3 +47,74 @@ SoftReference类所提供的get()方法返回Java对象的强引用。另外，�
          
 > 更积极移除基于垃圾收集器状态和弱引用规则的对象
 
+----------------------------------------
+
+### BlockingCache 阻塞缓存模型
+
+当元素在缓存中找不到时，它会在缓存键上设置一个锁。这样，其他线程将等待这个元素被填充，而不是命中数据库。
+
+使用 **ConcurrentHashMap** 对缓存对象进行加锁保护，锁机制采用 **ReentrantLock**。
+
+### LoggingCache 日志缓存，添加功能：取缓存时打印命中率
+
+使用mybatis自己的抽象Log
+
+维护两个值，访问次数和命中次数，打印命中率。
+
+### ScheduledCache 定时调度缓存，目的是每一小时（默认）清空一下缓存
+
+使用 **System.currentTimeMillis()** 进行时间计算
+
+### SerializedCache 序列化缓存，用途是先将对象序列化成2进制，再缓存,好处是将对象压缩了，省内存。坏处是速度慢了
+
+序列化： Object -> byte[]
+    
+    //序列化核心就是ByteArrayOutputStream
+    ByteArrayOutputStream bos = new ByteArrayOutputStream();
+    ObjectOutputStream oos = new ObjectOutputStream(bos);
+    oos.writeObject(value);
+    oos.flush();
+    oos.close();
+    return bos.toByteArray();
+
+反序列化： byte[] -> Object
+
+    //反序列化核心就是ByteArrayInputStream
+    ByteArrayInputStream bis = new ByteArrayInputStream(value);
+    ObjectInputStream ois = new CustomObjectInputStream(bis);
+    result = (Serializable) ois.readObject();
+    
+### SynchronizedCache 同步缓存，
+
+    防止多线程问题
+    核心: 加锁
+    ReadWriteLock.readLock().lock()/unlock()
+    ReadWriteLock.writeLock().lock()/unlock()
+    3.2.6以后这个类已经没用了，考虑到Hazelcast, EhCache已经有锁机制了，所以这个锁就画蛇添足了。
+    bug见https://github.com/mybatis/mybatis-3/issues/159
+    
+### （仍有疑问）TransactionalCache 事务缓存，一次性存入多个缓存，移除多个缓存
+
+底层使用 Map 管理 entriesToAddOnCommit（要添加到Commit上的条目），每次put时都提交到此处。
+
+使用 Set 管理 entriesMissedInCache（缓存中遗漏的条目），每次get时，若未命中，则添加到此处。
+
+设置标志位: commit时要不要清缓存，默认commit时不清缓存
+
+commit方法，提供事务功能，将Map中的条目全部提交给委托的Cache类，然后检查MISS中遗漏的项，将其全部添加给Cache类。
+
+rollback方法，提供事务回滚功能，将未命中条目全部提交。
+
+### TransactionalCacheManager 事务缓存管理器，被CachingExecutor使用
+
+通过Map管理了许多TransactionalCache
+
+提交时全部提交
+
+回滚时全部回滚
+
+### PerpetualCache 永久缓存，一旦存入就一直保持
+
+每个永久缓存有一个ID来识别，需要实现hashcode()和equals()
+
+内部就是一个HashMap,所有方法基本就是直接调用HashMap的方法,不支持多线程

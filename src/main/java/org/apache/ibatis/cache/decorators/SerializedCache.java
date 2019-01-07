@@ -56,7 +56,7 @@ public class SerializedCache implements Cache {
     @Override
     public void putObject(Object key, Object object) {
         if (object == null || object instanceof Serializable) {
-            //先序列化，再委托被包装者putObject
+            // 先序列化，再委托被包装者putObject
             delegate.putObject(key, serialize((Serializable) object));
         } else {
             throw new CacheException("SharedCache failed to make a copy of a non-serializable object: " + object);
