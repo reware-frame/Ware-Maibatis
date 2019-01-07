@@ -48,7 +48,7 @@ public class CacheKey implements Cloneable, Serializable {
         this.updateList = new ArrayList<Object>();
     }
 
-    //传入一个Object数组，更新hashcode和效验码
+    // 传入一个Object数组，更新hashcode和效验码
     public CacheKey(Object[] objects) {
         this();
         updateAll(objects);
@@ -60,14 +60,14 @@ public class CacheKey implements Cloneable, Serializable {
 
     public void update(Object object) {
         if (object != null && object.getClass().isArray()) {
-            //如果是数组，则循环调用doUpdate
+            // 如果是数组，则循环调用doUpdate
             int length = Array.getLength(object);
             for (int i = 0; i < length; i++) {
                 Object element = Array.get(object, i);
                 doUpdate(element);
             }
         } else {
-            //否则，doUpdate
+            // 否则，doUpdate
             doUpdate(object);
         }
     }

@@ -26,21 +26,21 @@ import org.apache.ibatis.cache.Cache;
 /**
  * Soft Reference cache decorator
  * Thanks to Dr. Heinz Kabutz for his guidance here.
- * 软引用缓存,核心是SoftReference
+ * 软引用缓存,核心是SoftReference，移除基于垃圾回收器状态和软引用规则的对象
  *
  * @author Clinton Begin
  */
 public class SoftCache implements Cache {
-    //链表用来引用元素，防垃圾回收
+    // 链表用来引用元素，防垃圾回收
     private final Deque<Object> hardLinksToAvoidGarbageCollection;
-    //被垃圾回收的引用队列
+    // 被垃圾回收的引用队列
     private final ReferenceQueue<Object> queueOfGarbageCollectedEntries;
     private final Cache delegate;
     private int numberOfHardLinks;
 
     public SoftCache(Cache delegate) {
         this.delegate = delegate;
-        //默认链表可以存256元素
+        // 默认链表可以存256元素
         this.numberOfHardLinks = 256;
         this.hardLinksToAvoidGarbageCollection = new LinkedList<Object>();
         this.queueOfGarbageCollectedEntries = new ReferenceQueue<Object>();
@@ -115,7 +115,7 @@ public class SoftCache implements Cache {
 
     private void removeGarbageCollectedItems() {
         SoftEntry sv;
-        //查看被垃圾回收的引用队列,然后调用removeObject移除他们
+        // 查看被垃圾回收的引用队列,然后调用removeObject移除他们
         while ((sv = (SoftEntry) queueOfGarbageCollectedEntries.poll()) != null) {
             delegate.removeObject(sv.key);
         }

@@ -40,8 +40,7 @@ import java.util.concurrent.locks.ReadWriteLock;
  */
 
 /**
- * 缓存
- *
+ * 缓存，可通过继承实现自定义缓存
  */
 public interface Cache {
 
@@ -52,17 +51,17 @@ public interface Cache {
     String getId();
 
     /**
-     * @param key Can be any object but usually it is a {@link CacheKey}
+     * @param key   Can be any object but usually it is a {@link CacheKey}
      * @param value The result of a select.
      */
-    //存入值
+    // 保存对象到缓存
     void putObject(Object key, Object value);
 
     /**
      * @param key The key
      * @return The object stored in the cache.
      */
-    //获取值
+    // 获取缓存key的数据
     Object getObject(Object key);
 
     /**
@@ -71,13 +70,13 @@ public interface Cache {
      * @param key The key
      * @return The object that was removed
      */
-    //删除值
+    // 删除缓存为key的值
     Object removeObject(Object key);
 
     /**
      * Clears this cache instance
      */
-    //清空
+    // 清空缓存
     void clear();
 
     /**
@@ -85,17 +84,17 @@ public interface Cache {
      *
      * @return The number of elements stored in the cache (not its capacity).
      */
-    //取得大小
+    // 取得缓存大小
     int getSize();
 
     /**
      * Optional. As of 3.2.6 this method is no longer called by the core.
-     *
+     * <p>
      * Any locking needed by the cache must be provided internally by the cache provider.
      *
      * @return A ReadWriteLock
      */
-    //取得读写锁, 从3.2.6开始没用了，要SPI自己实现锁
+    // 取得读写锁, 从3.2.6开始没用了，要SPI自己实现锁
     ReadWriteLock getReadWriteLock();
 
 }
