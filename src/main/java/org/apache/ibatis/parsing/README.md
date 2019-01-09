@@ -1,5 +1,7 @@
 ## parsing
 
+将#{}，${}中的内容，根据properties文件的<key,value>，替换为相应的value值。
+
 对JDK或者其他组件封装一下，然后提供自己的实现方法。
 
 ### TokenHandler 记号处理器 接口
@@ -44,3 +46,9 @@ XPathParser类parsing包中的核心类之一，既然这个类是XPath的Parser
 4. 将properties的资源变量和string资源字符串传入PropertyParser解析器进行解析。
 
 5. 返回解析后的字符串
+
+### XNode 节点
+
+该类是对org.w3c.dom.Node类的一个封装，在Node类的基础上添加了一些新功能。
+
+解析XML的节点数据。
